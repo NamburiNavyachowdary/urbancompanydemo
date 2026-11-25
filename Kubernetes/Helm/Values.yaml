@@ -1,0 +1,26 @@
+replicaCount: 3
+
+image:
+  repository: uccomp.azurecr.io/ucapp
+  tag: "v1"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets:
+  - name: acr-secret
+
+container:
+  name: uc-container
+  port: 5000
+
+deployment:
+  name: uc-deployment
+
+app:
+  name: my-app
+
+service:
+  name: uc-service
+  type: NodePort
+  port: 5000
+  targetPort: 5000
+  nodePort: 30001
